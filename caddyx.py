@@ -45,7 +45,7 @@ caddyname = "caddy web server"
 cwd = os.getcwd()
 userpath = os.path.expanduser('~')
 slash = os.sep
-caddygo = userpath + slash + 'go' + slash + 'src' + slash + 'github.com' + slash + 'mholt' + slash + 'caddy' + slash + 'caddy'
+caddygo = userpath + slash + 'go' + slash + 'src' + slash + 'github.com' + slash + 'caddyserver' + slash + 'caddy' + slash + 'caddy'
 
 # Get system type
 whatos = platform.system().lower()
@@ -363,7 +363,7 @@ def Build():
 	# get caddy via go
 	print("please wait. downloading latest source..")
 	subprocess.call(['go', 'get', 'github.com/caddyserver/builds'])
-	subprocess.call(['go', 'get', 'github.com/mholt/caddy'])
+	subprocess.call(['go', 'get', 'github.com/caddyserver/caddy'])
 	os.chdir(caddygo + slash + 'caddymain')
 
 	# Check if plugin need to be installed
