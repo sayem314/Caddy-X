@@ -396,6 +396,24 @@ def Build():
 
 # main commands!
 try:
+	getbits = platform.architecture()[0]
+	cpubits="unknown"
+	if getbits == '64bit':
+		cpubits="amd64"
+		cpubitsname="64bit.."
+	elif getbits == '32bit':
+		cpubits="386"
+		cpubitsname="32bit.."
+	isarm = platform.uname()[4].lower()
+	if isarm[:3] == 'arm':
+		cpubits = isarm[:3] + isarm[4]
+		if getbits == '64bit':
+			cpubits='arm64'
+		cpubitsname=isarm + ".."
+	if isarm == 'aarch64':
+		cpubits='arm64'
+		cpubitsname="arm 64bit.."
+
 	if str(sys.argv[1]) == "get":
 		if os.path.isfile("caddyserver" + slash +"caddy"):
 			print(err, "caddy exists: caddyserver/caddy")
